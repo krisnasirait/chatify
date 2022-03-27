@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-import 'package:chatify/pages/splash_pages.dart';
+import 'package:chatify/pages/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
