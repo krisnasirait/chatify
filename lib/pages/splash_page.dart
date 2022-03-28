@@ -1,26 +1,36 @@
+import 'package:chatify/services/database_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:chatify/services/navigation_service.dart';
 import 'package:chatify/services/media_service.dart';
 import 'package:chatify/services/cloud_storage_service.dart';
+import 'package:chatify/services/database_service.dart';
 import 'package:get_it/get_it.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
 
-  SplashPage({Key? key, required this.onInitializationComplete})
+  SplashPage({required Key key, required this.onInitializationComplete})
       : super(key: key);
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<SplashPage> createState() {
+    return _SplashPageState();
+  }
 }
 
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _setup().then((_) => widget.onInitializationComplete);
+    Future.delayed(Duration(seconds: 1)).then(
+      (_) {
+        _setup().then(
+          (_) => widget.onInitializationComplete(),
+        );
+      },
+    );
   }
 
   @override
@@ -63,6 +73,9 @@ class _SplashPageState extends State<SplashPage> {
     );
     GetIt.instance.registerSingleton<CloudStorageService>(
       CloudStorageService(),
+    );
+    GetIt.instance.registerSingleton<DatabaseService>(
+      DatabaseService(),
     );
   }
 }
