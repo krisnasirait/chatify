@@ -15,6 +15,8 @@ class _LoginPageState extends State<LoginPage> {
   late double _deviceHeight;
   late double _deviceWidth;
 
+  final _loginFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return _buildUI();
@@ -52,6 +54,20 @@ class _LoginPageState extends State<LoginPage> {
           color: Colors.white,
           fontSize: 40,
           fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+
+  Widget _loginForm() {
+    return Container(
+      height: _deviceHeight * 0.18,
+      child: Form(
+        key: _loginFormKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [],
         ),
       ),
     );
