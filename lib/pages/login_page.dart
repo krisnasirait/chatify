@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'package:chatify/widgets/input_fields.dart';
+
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
 
@@ -39,6 +41,13 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _pageTitle(),
+            SizedBox(
+              height: _deviceHeight * 0.04,
+            ),
+            _loginForm(),
+            SizedBox(
+              height: _deviceHeight * 0.05,
+            ),
           ],
         ),
       ),
@@ -66,8 +75,23 @@ class _LoginPageState extends State<LoginPage> {
         key: _loginFormKey,
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomTextFormField(
+              onSaved: (_value) {},
+              regEx:
+                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+              hintText: "Email",
+              obscureText: false,
+            ),
+            CustomTextFormField(
+              onSaved: (_value) {},
+              regEx: r".{8,}",
+              hintText: "Password",
+              obscureText: true,
+            ),
+          ],
         ),
       ),
     );
