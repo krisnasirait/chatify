@@ -70,7 +70,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginForm() {
     return Container(
-      height: _deviceHeight * 0.18,
       child: Form(
         key: _loginFormKey,
         child: Column(
@@ -78,19 +77,24 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            CustomTextFormField(
-              onSaved: (_value) {},
-              regEx:
-                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-              hintText: "Email",
-              obscureText: false,
+            Container(
+                child: CustomTextFormField(
+                onSaved: (_value) {},
+                regEx:
+                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                hintText: "Email",
+                obscureText: false,
+              ),
             ),
-            CustomTextFormField(
+            SizedBox(height: _deviceHeight * 0.03,),
+            Container(
+              child: CustomTextFormField(
               onSaved: (_value) {},
               regEx: r".{8,}",
               hintText: "Password",
               obscureText: true,
             ),
+            )
           ],
         ),
       ),
