@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'package:chatify/widgets/rounded_button.dart';
 import 'package:chatify/widgets/input_fields.dart';
 
 class LoginPage extends StatefulWidget {
@@ -48,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: _deviceHeight * 0.05,
             ),
+            _loginButton(),
           ],
         ),
       ),
@@ -70,7 +72,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginForm() {
     return Container(
-      height: _deviceHeight * 0.18,
       child: Form(
         key: _loginFormKey,
         child: Column(
@@ -78,22 +79,38 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            CustomTextFormField(
-              onSaved: (_value) {},
-              regEx:
-                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-              hintText: "Email",
-              obscureText: false,
+            Container(
+              child: CustomTextFormField(
+                onSaved: (_value) {},
+                regEx:
+                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                hintText: "Email",
+                obscureText: false,
+              ),
             ),
-            CustomTextFormField(
-              onSaved: (_value) {},
-              regEx: r".{8,}",
-              hintText: "Password",
-              obscureText: true,
+            SizedBox(
+              height: _deviceHeight * 0.03,
             ),
+            Container(
+              child: CustomTextFormField(
+                onSaved: (_value) {},
+                regEx: r".{8,}",
+                hintText: "Password",
+                obscureText: true,
+              ),
+            )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _loginButton() {
+    return RoundedButton(
+      name: "Login",
+      onPressed: () {},
+      width: _deviceWidth * 0.65,
+      height: _deviceHeight * 0.065,
     );
   }
 }
